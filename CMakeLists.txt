@@ -4,4 +4,5 @@ add_executable(chip8 src/main.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+target_include_directories(chip8 PUBLIC_HEADER
+                             "${PROJECT_BINARY_DIR}/src")
