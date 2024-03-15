@@ -3,7 +3,6 @@
 #include "chip8.hpp"
 
 int main(int argc, char* argv[]) {
-  std::cout << "There are " << argc << " arguments\n";
   std::string romPath;
   // Leaving max arguments at 1 until arguments other than the rom path are needed
   for (int i=1; i < 2; i++) {

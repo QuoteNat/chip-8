@@ -16,7 +16,6 @@ Chip8::Chip8(std::string romPath) {
         std::cout << "Read " << romPath << std::endl;
         // read romBuffer into program memory
         for (int i=0; i<size; i++) {
-            std::cout << romBuffer[i];
             memory[i+512] = romBuffer[i];
         }
     } else {
