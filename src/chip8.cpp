@@ -33,3 +33,24 @@ Chip8::Chip8(std::string romPath) : memory{0},
         std::cerr << "Failed to read rom file!" << std::endl;
     }
 }
+
+bool Chip8::execute()
+{
+    sf::RenderWindow window(sf::VideoMode(64, 32), "Chip8");
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear(sf::Color::Black);
+
+        window.display();
+    }
+
+    return false;
+}

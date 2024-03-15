@@ -26,6 +26,10 @@ private:
     unsigned char V[16];
     // generally used for memory addresses
     short I;
+    /**
+     * Runs a single cycle of the program
+     */
+    void cycle();
 
 public:
     /**
@@ -33,4 +37,10 @@ public:
      * @param rom The path to the chip8 rom to be run.
      */
     Chip8(std::string romPath);
+
+    /**
+     * Executes the emulators main loop
+     * @return Returns true if there was an error
+     */
+    bool execute();
 };
