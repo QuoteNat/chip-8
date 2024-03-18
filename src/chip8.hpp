@@ -7,41 +7,38 @@
 #include <stack>
 #include <bitset>
 
-/**
- * Represents a Chip-8 interpreter
- */
+/// @brief A Chip8 interpreter/emulator.
 class Chip8
 {
 private:
-    // Chip 8 RAM
+    /// Chip 8 RAM
     unsigned char memory[4096];
     bool displayBuffer[64 * 32];
-    // Stores addresses that subroutines return to after completing
+
+    /// Stores addresses that subroutines return to after completing
     std::stack<short> stack;
-    // Program counter for the currently executing address
+
+    /// Program counter for the currently executing address
     short counter;
-    // REGISTERS
+
     unsigned char soundRegister;
     unsigned char delayRegister;
-    // general purpose registers
+
+    /// general purpose registers
     unsigned char V[16];
-    // generally used for memory addresses
+
+    /// generally used for memory addresses
     short I;
-    /**
-     * Runs a single cycle of the program
-     */
+
+    /// @brief Reads and executes a single opcode from memory
     void cycle();
 
 public:
-    /**
-     * Initializes a chip8 interpreter with a given rom
-     * @param rom The path to the chip8 rom to be run.
-     */
+    /// @brief Creates a Chip8 object from a ROM file
+    /// @param romPath The file path to the ROM to run
     Chip8(std::string romPath);
 
-    /**
-     * Executes the emulators main loop
-     * @return Returns true if there was an error
-     */
+    /// @brief Run the main "game" loop
+    /// @return True if there was an error, and false if there wasn't
     bool execute();
 };
