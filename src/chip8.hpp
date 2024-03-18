@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <bitset>
 
 /**
  * Represents a Chip-8 interpreter

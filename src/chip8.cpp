@@ -34,6 +34,25 @@ Chip8::Chip8(std::string romPath) : memory{0},
     }
 }
 
+void Chip8::cycle()
+{
+    unsigned char byte1 = memory[counter];
+    unsigned char byte2 = memory[counter + 1];
+    // combine the first 2 bytes into a single instruction
+    unsigned short instruction = short(byte1 << 8) + byte2;
+    std::cout << std::hex << instruction << std::endl;
+    std::cout << std::hex << (instruction >> 12) << std::endl;
+    // instructions with a leading 0
+    if ((instruction >> 12) == 0x0)
+    {
+        std::cout << "Leading 0 instruction\n";
+        if (instruction == 0x00e0)
+        {
+            std::cout << "Clear screen\n";
+        }
+    }
+}
+
 bool Chip8::execute()
 {
     sf::RenderWindow window(sf::VideoMode(64, 32), "Chip8");
@@ -47,7 +66,7 @@ bool Chip8::execute()
                 window.close();
         }
 
-        window.clear(sf::Color::Black);
+        cycle();
 
         window.display();
     }
